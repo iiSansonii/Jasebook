@@ -6,8 +6,19 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitInstance {
 
 
-    val api:api by lazy {
-        Retrofit.Builder().baseUrl("https://192.168.1.3:8000")
-            .addConverterFactory(GsonConverterFactory.create()).build().create(api::class.java)
-    }
+    private val BASE_URL = "https://e97d-91-106-52-179.ngrok-free.app"
+    private var mRetrofit: Retrofit? = null
+
+
+    val client: Retrofit
+        get() {
+            if (mRetrofit == null) {
+                mRetrofit = Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+            }
+            return this.mRetrofit!!
+        }
+
 }
