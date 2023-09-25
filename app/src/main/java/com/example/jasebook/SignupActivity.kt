@@ -7,8 +7,8 @@ import android.widget.Button
 import androidx.activity.ComponentActivity
 
 class SignupActivity:ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
         val switchtosigninbtn=findViewById<Button>(R.id.switchtosigninbtn)
 
