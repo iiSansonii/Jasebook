@@ -8,7 +8,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
-
+//endpoints for retrofit to connect
 interface api {
     @GET("/post")
     fun getfeed(): Call<ArrayList<post>>

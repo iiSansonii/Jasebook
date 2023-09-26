@@ -33,7 +33,7 @@ class SigninActivity: ComponentActivity() {
                     runOnUiThread {
 
                         if (response.isSuccessful) {
-                            session= response.headers().value(4)
+
 
                             val intent=Intent(this@SigninActivity,MainActivity::class.java)
                             startActivity(intent)

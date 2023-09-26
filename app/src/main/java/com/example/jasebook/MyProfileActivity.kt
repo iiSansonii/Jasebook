@@ -27,8 +27,8 @@ class MyProfileActivity: ComponentActivity() {
         val name=findViewById<TextView>(R.id.myprofile_name)
         val username=findViewById<TextView>(R.id.myprofile_username)
         var api: api = RetrofitInstance.client.create(api::class.java)
-        val calluser=api.getuser()
-        var url = "https://c14e-91-106-52-179.ngrok-free.app/img/"
+        val calluser=api.getme()
+        var url = "https://7032-91-106-52-179.ngrok-free.app/img/"
 
             calluser.enqueue(object : Callback<user> {
                 override fun onResponse(call: Call<user>, response: Response<user>) {
@@ -38,6 +38,12 @@ class MyProfileActivity: ComponentActivity() {
                         username.text = user.username
                         url += user.img
                         Log.d("popo", url)
+                        Glide.with(this@MyProfileActivity)
+                            .load(url)
+                            .fitCenter()
+                            .skipMemoryCache(true)
+                            .diskCacheStrategy(DiskCacheStrategy.NONE)
+                            .placeholder(R.drawable.img_1).into(img)
                     }
                 }
 
@@ -46,12 +52,7 @@ class MyProfileActivity: ComponentActivity() {
                 }
 
             })
-        Glide.with(this)
-            .load(url)
-            .fitCenter()
-            .skipMemoryCache(true)
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .placeholder(R.drawable.img_1).into(img)
+
 
 
 

@@ -22,7 +22,7 @@ import retrofit2.HttpException
 import retrofit2.Response
 import java.io.IOException
 import com.example.jasebook.postadapter
-public var session:String=""
+
 
 class MainActivity : ComponentActivity() {
     private var mAdapter: postadapter?= null;
@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
         val rec = findViewById<RecyclerView>(R.id.rec)
         rec.layoutManager = LinearLayoutManager(this)
         mAdapter=postadapter(mQuestions)
-        Log.d("session", session)
+
         var api: api = RetrofitInstance.client.create(api::class.java)
         val call=api.getfeed()
         call.enqueue(object :Callback<ArrayList<post>>{

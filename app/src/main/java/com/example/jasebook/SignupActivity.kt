@@ -13,7 +13,7 @@ class SignupActivity:ComponentActivity() {
         val switchtosigninbtn=findViewById<Button>(R.id.switchtosigninbtn)
 
         switchtosigninbtn.setOnClickListener {
-            val intent=Intent(this,MainActivity::class.java)
+            val intent=Intent(this,SigninActivity::class.java)
             startActivity(intent)
         }
     }
