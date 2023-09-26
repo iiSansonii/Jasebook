@@ -4,6 +4,7 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
@@ -17,4 +18,12 @@ interface api {
 
     @GET("/me")
     fun getme():Call<user>
+
+    @GET("/user/pepe")
+    fun getuser():Call<user>
+    @GET("/user/pepe/posts")
+    fun getuserpost():Call<ArrayList<post>>
+
+    @POST("/logout")
+    fun logout():Call<message>
 }

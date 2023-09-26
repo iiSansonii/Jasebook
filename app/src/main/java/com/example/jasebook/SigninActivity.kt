@@ -10,6 +10,8 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.create
 
 class SigninActivity: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,8 +31,12 @@ class SigninActivity: ComponentActivity() {
                     response: Response<message>
                 ) {
                     runOnUiThread {
-                        if (response.message()== "message(message=welcome)") {
-                            Log.d("abbas", response.body().toString())
+
+                        if (response.isSuccessful) {
+                            session= response.headers().value(4)
+
+                            val intent=Intent(this@SigninActivity,MainActivity::class.java)
+                            startActivity(intent)
                         } else {
                             Log.d("abbas", "failed" + response.body())
                         }

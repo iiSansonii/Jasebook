@@ -66,4 +66,6 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation ("androidx.recyclerview:recyclerview:1.2.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:3.4.1")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
 }

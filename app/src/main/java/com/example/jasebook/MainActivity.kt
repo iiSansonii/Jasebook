@@ -22,6 +22,7 @@ import retrofit2.HttpException
 import retrofit2.Response
 import java.io.IOException
 import com.example.jasebook.postadapter
+public var session:String=""
 
 class MainActivity : ComponentActivity() {
     private var mAdapter: postadapter?= null;
@@ -32,7 +33,7 @@ class MainActivity : ComponentActivity() {
         val rec = findViewById<RecyclerView>(R.id.rec)
         rec.layoutManager = LinearLayoutManager(this)
         mAdapter=postadapter(mQuestions)
-
+        Log.d("session", session)
         var api: api = RetrofitInstance.client.create(api::class.java)
         val call=api.getfeed()
         call.enqueue(object :Callback<ArrayList<post>>{
@@ -65,6 +66,36 @@ class MainActivity : ComponentActivity() {
         signinbtn.setOnClickListener{
             val intent=Intent(this,SigninActivity::class.java)
             startActivity(intent)
+        }
+        val switchtome=findViewById<Button>(R.id.myprofilebtn)
+        switchtome.setOnClickListener {
+            val intent=Intent(this,MyProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
+        val logoutbtn=findViewById<Button>(R.id.logoutbtn)
+
+        logoutbtn.setOnClickListener {
+            val call=api.logout()
+            call.enqueue(object :Callback<message>{
+                override fun onResponse(call: Call<message>, response: Response<message>) {
+                    if(response.body()?.message=="loged out"){
+                        Log.d("yyyttt","loged out")
+                    }else{
+                        val m=response.body()?.message
+                        if(m!=null) {
+                            Log.d("yyyttt", m)
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<message>, t: Throwable) {
+
+                }
+
+            })
         }
 
     }
