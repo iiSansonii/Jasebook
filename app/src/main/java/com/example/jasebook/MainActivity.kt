@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,8 +24,10 @@ import retrofit2.HttpException
 import retrofit2.Response
 import java.io.IOException
 import com.example.jasebook.postadapter
-
+var u=user("","","")
 var signed=false
+
+var pid:Int=-1
 class MainActivity : ComponentActivity() {
     private var mAdapter: postadapter?= null;
     private var mQuestions: ArrayList<post> = ArrayList()
@@ -74,12 +77,13 @@ class MainActivity : ComponentActivity() {
             startActivity(intent)
         }
 
-
+        val publish=findViewById<Button>(R.id.publish)
 
         val logoutbtn=findViewById<Button>(R.id.logoutbtn)
         if(signed==false){
             logoutbtn.visibility= View.GONE
             switchtome.visibility=View.GONE
+            publish.visibility=View.GONE
         }else{
             signinbtn.visibility=View.GONE
         }
@@ -105,6 +109,13 @@ class MainActivity : ComponentActivity() {
 
             })
         }
+        publish.setOnClickListener{
+            val intent=Intent(this@MainActivity,PublishActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
 
     }
 }

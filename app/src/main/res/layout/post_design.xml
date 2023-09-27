@@ -90,7 +90,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/commentimg"
         app:layout_constraintTop_toBottomOf="@id/body" />
+    <Button
+        android:id="@+id/EditBtn"
 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="edit"
+        app:layout_constraintStart_toEndOf="@+id/no_like"
+        app:layout_constraintTop_toTopOf="@+id/likeimg" />
+    <Button
+        android:id="@+id/DeleteBtn"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="delete"
+        app:layout_constraintStart_toEndOf="@+id/EditBtn"
+        app:layout_constraintTop_toTopOf="@+id/likeimg"
+        android:textColor="@color/purple_200"
+        />
     <View
         android:id="@+id/view1"
         android:layout_width="fill_parent"

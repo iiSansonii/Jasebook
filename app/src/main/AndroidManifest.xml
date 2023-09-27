@@ -44,6 +44,20 @@
             android:label="@string/app_name">
 
         </activity>
+        <activity
+            android:name=".PublishActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            >
+
+        </activity>
+        <activity
+            android:name=".EditPostActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            >
+
+        </activity>
     </application>
 
 </manifest>

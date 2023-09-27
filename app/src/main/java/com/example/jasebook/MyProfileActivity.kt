@@ -56,17 +56,6 @@ class MyProfileActivity: ComponentActivity() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
         val callpost=api.getmypost()
         val rec = findViewById<RecyclerView>(R.id.myprofile_rec)
         rec.layoutManager = LinearLayoutManager(this)

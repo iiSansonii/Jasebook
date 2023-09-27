@@ -70,7 +70,7 @@
         android:layout_height="46dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintButtom_toTopOf="@+id/toolbar" />
+        app:layout_constraintBottom_toTopOf="@+id/toolbar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

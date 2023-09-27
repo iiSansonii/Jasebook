@@ -33,7 +33,23 @@ class SigninActivity: ComponentActivity() {
                     runOnUiThread {
 
                         if (response.isSuccessful) {
+                            val c=api.getme()
+                            c.enqueue(object :Callback<user>{
+                                override fun onResponse(
+                                    call: Call<user>,
+                                    response: Response<user>
+                                ) {
+                                    val s=response.body()
+                                    if(s!=null){
+                                        u=s
+                                    }
+                                }
 
+                                override fun onFailure(call: Call<user>, t: Throwable) {
+
+                                }
+
+                            })
                             signed=true
                             val intent=Intent(this@SigninActivity,MainActivity::class.java)
                             startActivity(intent)
