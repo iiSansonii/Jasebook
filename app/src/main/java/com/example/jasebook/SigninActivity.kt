@@ -34,7 +34,7 @@ class SigninActivity: ComponentActivity() {
 
                         if (response.isSuccessful) {
 
-
+                            signed=true
                             val intent=Intent(this@SigninActivity,MainActivity::class.java)
                             startActivity(intent)
                         } else {
@@ -58,3 +58,4 @@ class SigninActivity: ComponentActivity() {
     }
 
 }
+

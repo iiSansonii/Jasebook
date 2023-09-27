@@ -19,11 +19,12 @@ interface api {
     @GET("/me")
     fun getme():Call<user>
 
-    @GET("/user/pepe")
+    @GET("/user/")
     fun getuser():Call<user>
     @GET("/user/pepe/posts")
     fun getuserpost():Call<ArrayList<post>>
-
+    @GET("/me/post")
+    fun getmypost():Call<ArrayList<post>>
     @POST("/logout")
     fun logout():Call<message>
 }

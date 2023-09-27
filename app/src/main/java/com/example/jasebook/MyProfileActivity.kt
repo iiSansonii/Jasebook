@@ -23,12 +23,12 @@ class MyProfileActivity: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_myprofile)
+        var url = "http://192.168.1.3:8000/img/"
         val img=findViewById<ImageView>(R.id.pfp)
         val name=findViewById<TextView>(R.id.myprofile_name)
         val username=findViewById<TextView>(R.id.myprofile_username)
         var api: api = RetrofitInstance.client.create(api::class.java)
         val calluser=api.getme()
-        var url = "https://7032-91-106-52-179.ngrok-free.app/img/"
 
             calluser.enqueue(object : Callback<user> {
                 override fun onResponse(call: Call<user>, response: Response<user>) {
@@ -67,7 +67,7 @@ class MyProfileActivity: ComponentActivity() {
 
 
 
-        val callpost=api.getuserpost()
+        val callpost=api.getmypost()
         val rec = findViewById<RecyclerView>(R.id.myprofile_rec)
         rec.layoutManager = LinearLayoutManager(this)
         mAdapter=postadapter(mQuestions)
@@ -78,6 +78,7 @@ class MyProfileActivity: ComponentActivity() {
             ) {
                 runOnUiThread {
                     val posts = response.body()
+
                     Log.d("hey", posts.toString())
                     if (posts != null) {
                         mQuestions.addAll(posts)

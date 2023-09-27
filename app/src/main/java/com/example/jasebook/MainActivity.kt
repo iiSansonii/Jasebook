@@ -3,6 +3,7 @@ package com.example.jasebook
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -23,7 +24,7 @@ import retrofit2.Response
 import java.io.IOException
 import com.example.jasebook.postadapter
 
-
+var signed=false
 class MainActivity : ComponentActivity() {
     private var mAdapter: postadapter?= null;
     private var mQuestions: ArrayList<post> = ArrayList()
@@ -76,13 +77,20 @@ class MainActivity : ComponentActivity() {
 
 
         val logoutbtn=findViewById<Button>(R.id.logoutbtn)
-
+        if(signed==false){
+            logoutbtn.visibility= View.GONE
+            switchtome.visibility=View.GONE
+        }else{
+            signinbtn.visibility=View.GONE
+        }
         logoutbtn.setOnClickListener {
             val call=api.logout()
             call.enqueue(object :Callback<message>{
                 override fun onResponse(call: Call<message>, response: Response<message>) {
                     if(response.body()?.message=="loged out"){
-                        Log.d("yyyttt","loged out")
+                        signed=false
+                        val intent=Intent(this@MainActivity,MainActivity::class.java)
+                        startActivity(intent)
                     }else{
                         val m=response.body()?.message
                         if(m!=null) {
