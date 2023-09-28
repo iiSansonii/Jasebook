@@ -56,7 +56,7 @@ class postadapter(private val mList: ArrayList<post>): RecyclerView.Adapter<post
                     val c= response.body()
                     if(c!=null) {
 
-                        holder.likes.text = c.count.toString()
+                        holder.comments.text = c.count.toString()
                     }
                 }
             }
@@ -119,6 +119,12 @@ class postadapter(private val mList: ArrayList<post>): RecyclerView.Adapter<post
             pid=posts.id
             holder.itemView.context.startActivity(intent)
         }
+
+        holder.commentimg.setOnClickListener{
+            val intent=Intent(holder.itemView.context,CommentActivity::class.java)
+            pid=posts.id
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -133,6 +139,8 @@ class postadapter(private val mList: ArrayList<post>): RecyclerView.Adapter<post
         val likebtn:ImageView=ItemView.findViewById(R.id.likeimg)
         val Editbtn:Button=ItemView.findViewById(R.id.EditBtn)
         val Deletebtn:Button=ItemView.findViewById(R.id.DeleteBtn)
+        val commentimg:ImageView=ItemView.findViewById(R.id.commentimg)
+        val comments:TextView=ItemView.findViewById(R.id.no_comment)
     }
 
 }

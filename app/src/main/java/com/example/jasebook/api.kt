@@ -51,4 +51,7 @@ interface api {
     fun deletepost(@Path(value = "post_id",encoded = false)postid:Int):Call<message>
     @PUT("/post/{post_id}")
     fun editpost(@Path(value="post_id",encoded = false)postid:Int,@Body info:postbody):Call<message>
+
+    @POST("/post/{post_id}/comment")
+    fun postcomment(@Path(value="post_id",encoded = false)postid:Int,@Body info:postbody):Call<message>
 }
